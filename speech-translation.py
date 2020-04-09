@@ -11,22 +11,8 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
     translation_config.add_target_language(to_language)
 
-    # See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
-    translation_config.voice_name = "de-DE-Hedda"
-
     recognizer = speechsdk.translation.TranslationRecognizer(
             translation_config=translation_config)
-
-    def synthesis_callback(evt):
-        size = len(evt.result.audio)
-        print(f'Audio synthesized: {size} byte(s) {"(COMPLETED)" if size == 0 else ""}')
-
-        if size > 0:
-            file = open('translation.wav', 'wb+')
-            file.write(evt.result.audio)
-            file.close()
-
-    recognizer.synthesizing.connect(synthesis_callback)
 
     print(f'Say something in "{from_language}" and we\'ll translate into "{to_language}".')
 

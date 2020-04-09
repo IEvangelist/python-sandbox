@@ -29,9 +29,9 @@ def get_result_text(reason, result):
     return reason_format.get(reason, 'Unable to recognize speech')
 
 def get_translations_text(result):
-    text = f'RECOGNIZED "{from_language}": {result.text}\n'
+    text = f'Recognized "{from_language}": {result.text}\n'
     for language in result.translations:
-        text += f'TRANSLATED into "{language}": {result.translations[language]}\n'
+        text += f'Translated into "{language}": {result.translations[language]}\n'
     return text
 
 translate_speech_to_text()

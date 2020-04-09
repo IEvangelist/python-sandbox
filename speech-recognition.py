@@ -13,9 +13,9 @@ def recognize_speech_to_text():
 
 def get_result_text(reason, result):
     reason_format = {
-        speechsdk.ResultReason.RecognizedSpeech: 'Recognized: "{}"'.format(result.text),
-        speechsdk.ResultReason.NoMatch: 'No speech could be recognized: {}'.format(result.no_match_details),
-        speechsdk.ResultReason.Canceled: 'Speech Recognition canceled: {}'.format(result.cancellation_details)
+        speechsdk.ResultReason.RecognizedSpeech: f'Recognized: "{result.text}"',
+        speechsdk.ResultReason.NoMatch: f'No speech could be recognized: {result.no_match_details}',
+        speechsdk.ResultReason.Canceled: f'Speech Recognition canceled: {result.cancellation_details}'
     }
     return reason_format.get(reason, 'Unable to recognize speech')
 
